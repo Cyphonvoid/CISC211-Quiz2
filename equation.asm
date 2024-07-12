@@ -7,11 +7,12 @@ _start:
     mov ebx, [b]           ; Load b into ebx
     mul ebx                ; Multiply a and b, result in eax
 
-    mov ecx, [c]           ; Load c into ecx
+    mov ebx, eax
+    mov eax, [c]           ; Load c into ecx
     mov edx, [d]           ; Load d into edx
-    mul ecx               ; Multiply c and d, result in ecx
+    mul edx               ; Multiply c and d, result in ecx
 
-    add eax, ecx         ; Add the product of c and d to the product of a and b (in eax)
+    add ebx, eax         ; Add the product of c and d to the product of a and b (in eax)
 
     mov eax, 1             ; Set eax to 1 (for system call)
     int 0x80              ; Terminate program (system call)
@@ -20,7 +21,7 @@ segment .bss
     result resb 1
 
 segment .data
-    a DD 1
-    b DD 1
-    c DD 1
-    d DD 1
+    a DD 5
+    b DD 4
+    c DD 3
+    d DD 5
